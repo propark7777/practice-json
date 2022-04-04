@@ -13,6 +13,21 @@ fetch('https://api.upbit.com/v1/candles/minutes/5?market=KRW-ETH&count=10', opti
       console.log(response[0].market);
     }
   })
-  .catch(err => console.error(err));
+  // .catch(err => console.error(err));
+
+const options1 = {method: 'GET', headers: {Accept: 'application/json'}};
+
+fetch('https://api.upbit.com/v1/market/all?isDetails=false', options1)
+  .then(response => response.json())
+  .then(response => {
+    const coin_name = [];
+    for(let i= 0; response.length; i ++){
+      if(response[i].market.startsWith('KRW')){
+        console.log(response[i].market);
+      }
+    }
+    console.log(coin_name);
+  })
+  
 
   
